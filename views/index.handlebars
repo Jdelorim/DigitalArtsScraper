@@ -1,4 +1,4 @@
- <nav>
+    <nav>
      
     <div class="nav-wrapper z-depth-5 deep-purple darken-3">
       <span class="brand-logo">{{title}}</span>
@@ -19,9 +19,46 @@
     
   </nav>
 
-   <ul class="sidenav deep-purple lighten-1" id="mobile-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/saved">Saved Articles</a></li>
-        <li><a class="waves-effect waves-light btn">Scrape New Articles</a></li>
-        <li><a class="waves-effect waves-light btn">Clear Articles</a></li>
-   </ul>
+<ul class="sidenav deep-purple lighten-1" id="mobile-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/saved">Saved Articles</a></li>
+    <li><a class="waves-effect waves-light btn">Scrape New Articles</a></li>
+    <li><a class="waves-effect waves-light btn">Clear Articles</a></li>
+</ul>
+<section class="headerimg">
+    <div class="imgholder z-depth-3">
+        <img class="responsive-img" src="./images/serpentes_tattoo_sheet.jpg" height="200">
+        <div class="titleHolder overlay ">
+        <h1 class="center-align black-text overlay">{{title}}</h1>
+        </div>
+    </div>
+    
+</section>
+
+
+<section class="articles">
+    <h2 class="headers center grey-text">Articles</h2>
+      <div class="container z-depth-5">
+        <div class="row">
+            <div class="col s12 center headline deep-purple darken-3 white-text">
+             <a href="https://www.google.com" target="_blank"><img class="left responsive-img" src="https://picsum.photos/200/150/?random" ></a> 
+                <h4 class="left-align">{{headline}}</h4>
+            </div>
+            <div class="white">
+                <span class="black-text">{{blurb}}</span>
+            </div>
+            <div class="buttonHolder">
+                <a class="waves-effec waves-light deep-purple darken-3 btn">Save Article</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer class="footer deep-purple z-depth-2">
+    <div class="row">
+        <div class="col s12 center">
+            <span class="center-align white-text">{{title}}</span>
+        </div>
+    </div>
+</footer>
