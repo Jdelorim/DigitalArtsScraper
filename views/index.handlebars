@@ -11,8 +11,8 @@
       <ul  class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         <li><a href="/saved">Saved Articles</a></li>
-        <li><a class="waves-effect waves-light btn deep-purple lighten-1">Scrape New Articles</a></li>
-        <li><a class="waves-effect waves-light btn deep-purple lighten-1">Clear Articles</a></li>
+        <li><a href="/scraped"class="waves-effect waves-light btn deep-purple lighten-1">Scrape New Articles</a></li>
+        <li><a href="/clear" class="waves-effect waves-light btn deep-purple lighten-1">Clear Articles</a></li>
         </ul>
       </div>
     </div>
@@ -35,17 +35,19 @@
     
 </section>
 
-
+{{#each article}}
 <section class="articles">
     <h2 class="headers center grey-text">Articles</h2>
       <div class="container z-depth-5">
         <div class="row">
             <div class="col s12 center headline deep-purple darken-3 white-text">
-             <a href="https://www.google.com" target="_blank"><img class="left responsive-img" src="https://picsum.photos/200/150/?random" ></a> 
-                <h4 class="left-align">{{headline}}</h4>
+             <a href={{this.link}} target="_blank"><img class="left responsive-img" src={{this.img}} ></a> 
+             
+                <h4 class="left-align">{{this.headline}}</h4>
+            
             </div>
             <div class="white">
-                <span class="black-text">{{blurb}}</span>
+                <span class="black-text">{{this.blurb}}</span>
             </div>
             <div class="buttonHolder">
                 <a class="waves-effec waves-light deep-purple darken-3 btn">Save Article</a>
@@ -53,7 +55,7 @@
         </div>
     </div>
 </section>
-
+ {{/each}}
 
 <footer class="footer deep-purple z-depth-2">
     <div class="row">

@@ -1,14 +1,21 @@
 var express = require('express');
 var bodyParser = require("body-parser");
 var exhbs = require("express-handlebars");
-
-var app = express();
+var logger = require("morgan");
+var mongoose = require("mongoose");
+//----------------------
 var PORT = process.env.PORT || 4040;
+var app = express();
+//---
 
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
 app.use(express.static("public"));
+
+
+app.use(logger("dev"));
+mongoose.connect("mongodb://localhost/scrapdb", {useNewUrlParser: true});
 
 app.engine("handlebars", exhbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
@@ -16,10 +23,8 @@ app.set("view engine", "handlebars");
 //require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-var server = app.listen(PORT,listening);
-
-function listening() {
-    console.log("listening on:", PORT);
-}
+app.listen(PORT, function(){
+    console.log(`listening on ${PORT}`)
+})
 //module.exports = app;
     
