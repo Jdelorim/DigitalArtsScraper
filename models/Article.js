@@ -17,7 +17,12 @@ var ArticleSchema = new Schema({
     img: {
         type: String,   
         required: true
+    },
+    saveme: {
+        type: String,    
+        required: true
     }
+    
 });
 
 var Article = mongoose.model("Article", ArticleSchema);
