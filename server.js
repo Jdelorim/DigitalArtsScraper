@@ -1,27 +1,25 @@
 var express = require('express');
-var cheerio = require('cheerio');
-var request = require('request');
+var bodyParser = require("body-parser");
+var exhbs = require("express-handlebars");
 
+var app = express();
+var PORT = process.env.PORT || 4040;
 
-request("https://www.digitalartsonline.co.uk/news/", function(error, response, html) {
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
 
-    var $ = cheerio.load(html);
+app.use(express.static("public"));
 
-    var results = [];
-    $( ".article" || ".thumbContainer").each(function(i, element) {
-    
-        var title = $(element).text();
-       // var link = $("thumbContainer").find("a href");
-      // var newTitle =  $(element).find().children().attr("h2");
-        var link = $(element).children().attr("href");
+app.engine("handlebars", exhbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
 
-        results.push({
-            title: title,
-            link: link
-        });
-        
-    });
-    console.log("title",results);
-    //console.log(results);
-});
+//require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
+
+var server = app.listen(PORT,listening);
+
+function listening() {
+    console.log("listening on:", PORT);
+}
+//module.exports = app;
     
