@@ -81,9 +81,12 @@ app.get("/scraped", function (req, res) {
      
 
     });
-    
+    app.get("/saveID", function (req, res){
+        res.send("fndfndofmdsofm");
+    });
     app.get("/saved", function (req,res) {
-        res.render("saved",{  title:"Saved Articles", hidden: true});
+
+        res.render("saved",{  title:"Saved Articles"});
     });
     app.get("/clear", function (req,res) {
        
