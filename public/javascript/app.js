@@ -1,12 +1,31 @@
 $(document).ready(function () {
     $(".sidenav").sidenav();
+    $(".modal").modal();
 
-
+    $(".modal-trigger").on('click', function(){
+        var comments = $('#comments').val().trim();
+        console.log('comments', comments);
+    });
+   
+    
     $(".checkArticles").each(function () {
         var target = $(this).attr("data-target");
-        // console.log("target:", target );
+       
         if (target === "true") {
-            $(this).show().children().show();
+            $(this).show().children().show(); 
+
+            
+           var headline = $(this).find('h4').text();
+           console.log('headline:', headline);
+           $(".modal-trigger").on('click', function(){
+            var comments = $('#comments').val().trim();
+            $('.putHeadline').text(headline);
+
+            $('.deleteBtn').on('click', function(){
+                $(this).hide();
+            });
+        });
+
         } else {
             $(this).hide();
         }

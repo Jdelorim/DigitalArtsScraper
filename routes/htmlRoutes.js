@@ -83,10 +83,15 @@ module.exports = function (app) {
     });
 
     app.get("/clear", function (req, res) {
-
         db.Article.remove({}).then(function () {
             res.redirect('/');
         });
-
     });
+    app.get("/clear2", function (req, res) {
+        db.Article.remove({}).then(function () {
+            res.redirect('/saved');
+        });
+    });
+  
+
 };

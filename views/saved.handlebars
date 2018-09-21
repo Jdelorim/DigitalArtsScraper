@@ -11,17 +11,16 @@
       <ul  class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         <li><a href="/saved">Saved Articles</a></li>
-        
-        <li><a class="waves-effect waves-light btn deep-purple lighten-1">Clear Articles</a></li>
+        <li><a href="/clear2" class="waves-effect waves-light btn deep-purple lighten-1">Clear Articles</a></li>
         </ul>
       </div>
     </div>
     
   </nav>
   <ul class="sidenav deep-purple lighten-1" id="mobile-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/saved">Saved Articles</a></li>
-    <li><a class="waves-effect waves-light btn">Clear Articles</a></li>
+    <li><a href="/" class="white-text">Home</a></li>
+    <li><a href="/saved" class="white-text">Saved Articles</a></li>
+     <li><a href="/clear2" class="waves-effect waves-light btn deep-purple lighten-1">Clear Articles</a></li>
 </ul>
 
 
@@ -42,10 +41,30 @@
                 <span class="black-text">{{this.blurb}}</span>
             </div>
             <div class="buttonHolder">
-                <a data-target={{this.id}}  class="saveBtn waves-effect waves-light deep-purple darken-3 btn">Save Article</a>
+                <a data-target={{this.id}} class="deleteBtn waves-effect waves-light deep-purple darken-3 btn">Delete Article</a>
+                <a href="#modal1" class="waves-effect waves-light deep-purple lighten-1 btn modal-trigger">Article Notes</a>
             </div>
         </div>
     </div>
+
+    <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4 class="putHeadline"><bold></bold></h4>
+        <input placeholder="Leave Comments" id="comments" type="text" class="validate">
+       </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><bold>close</bold></a>
+    </div>
+  </div>
   {{/each}}
      
 </section>
+
+
+<footer class="footer deep-purple darken-3 z-depth-2">
+    <div class="row">
+        <div class="col s12 center">
+            <span class="center-align white-text">{{title}} by Joshua deLorimier</span>
+        </div>
+    </div>
+</footer>
