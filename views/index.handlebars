@@ -11,7 +11,7 @@
       <ul  class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         <li><a href="/saved">Saved Articles</a></li>
-        <li><a href="/scraped"class="waves-effect waves-light btn deep-purple lighten-1">Scrape New Articles</a></li>
+        <li><a href="/scraped" id="scrapedBtn" class="waves-effect waves-light btn deep-purple lighten-1">Scrape New Articles</a></li>
         <li><a href="/clear" class="waves-effect waves-light btn deep-purple lighten-1">Clear Articles</a></li>
         </ul>
       </div>
@@ -39,7 +39,7 @@
 <section class="articles">
     <h2 class="headers center grey-text">Articles</h2>
     {{#each article}}
-      <div class="container z-depth-5">
+      <div class="container z-depth-5" id="checkme">
         <div class="row">
             <div class="col s12 center headline deep-purple darken-3 white-text">
              <a href={{this.link}} target="_blank"><img class="left responsive-img" src={{this.img}} ></a> 
@@ -55,8 +55,9 @@
             </div>
         </div>
     </div>
+     {{/each}}
 </section>
- {{/each}}
+
 
 <footer class="footer deep-purple z-depth-2">
     <div class="row">

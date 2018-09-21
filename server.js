@@ -18,18 +18,17 @@ app.use(bodyParser.json());
 
 app.use(express.static("public"));
 
-
 app.use(logger("dev"));
 mongoose.connect("mongodb://localhost/scrapdb", {useNewUrlParser: true});
 
 app.engine("handlebars", exhbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
-//require("./routes/apiRoutes")(app);
+
 require("./routes/htmlRoutes")(app);
 
 app.listen(PORT, function(){
     console.log(`listening on ${PORT}`)
 })
-//module.exports = app;
+
     

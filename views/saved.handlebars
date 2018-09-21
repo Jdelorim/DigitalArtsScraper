@@ -21,9 +21,31 @@
   <ul class="sidenav deep-purple lighten-1" id="mobile-links">
     <li><a href="/">Home</a></li>
     <li><a href="/saved">Saved Articles</a></li>
-   
     <li><a class="waves-effect waves-light btn">Clear Articles</a></li>
 </ul>
-{{#if hidden}}
-fiodnfkodsnksdfnli
-{{/if}}
+
+
+<section class="articles">
+    <h2 class="headers center grey-text">Articles</h2>
+    
+    
+    {{#each article}}
+      <div class="checkArticles container z-depth-5" id="checkmesaved" data-target={{this.saveme}}>
+        <div class="row">
+            <div class="col s12 center headline deep-purple darken-3 white-text">
+             <a href={{this.link}} target="_blank"><img class="left responsive-img" src={{this.img}} ></a> 
+             
+                <h4 class="left-align">{{this.headline}}</h4>
+            
+            </div>
+            <div class="white">
+                <span class="black-text">{{this.blurb}}</span>
+            </div>
+            <div class="buttonHolder">
+                <a data-target={{this.id}}  class="saveBtn waves-effect waves-light deep-purple darken-3 btn">Save Article</a>
+            </div>
+        </div>
+    </div>
+  {{/each}}
+     
+</section>
