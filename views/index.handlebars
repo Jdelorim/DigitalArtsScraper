@@ -28,7 +28,7 @@
 
 <section class="headerimg">
     <div class="imgholder z-depth-3">
-        <img class="responsive-img" src="./images/serpentes_tattoo_sheet.jpg" height="100%">
+        <img class="responsive-img" src="./images/serpentes_tattoo_sheet.jpg"  height="50%">
         <div class="titleHolder overlay ">
         <h1 class="center-align black-text overlay">{{title}}</h1>
         </div>
@@ -40,7 +40,7 @@
 <section class="articles">
     <h2 class="headers center grey-text">Articles</h2>
     {{#each article}}
-      <div class="container z-depth-5" id="checkme">
+      <div class="container z-depth-5" data-target={{this.saveme}}>
         <div class="row">
             <div class="col s12 center headline deep-purple darken-3 white-text">
              <a href={{this.link}} target="_blank"><img class="left responsive-img" src={{this.img}} ></a> 

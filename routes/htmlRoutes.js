@@ -8,7 +8,7 @@ module.exports = function (app) {
 
    app.get("/scraped", function (req, res) {
 
-        var results = [];
+        const results = [];
         axios.get("https://www.digitalartsonline.co.uk/news/").then(function (response) {
 
             var $ = cheerio.load(response.data);
@@ -25,7 +25,8 @@ module.exports = function (app) {
                     blurb: blurb,
                     link: link,
                     img: img,
-                    saveme: false
+                    saveme: false, 
+                    comment: "test"
                 })
             });
 
@@ -56,10 +57,12 @@ module.exports = function (app) {
     });
 
     app.post("/saveID", function (req, res) {
-      var storeID = req.body.body;
+      var storeID = req.body.ID;
+      var saveme = req.body.saveme;
        console.log("body:", storeID);
+       console.log("saveme:", saveme)
         
-      db.Article.findOneAndUpdate({_id: storeID}, {$set:{saveme: true}}, {new: true}, function(err, doc){
+      db.Article.findOneAndUpdate({_id: storeID}, {$set:{saveme: saveme}}, {new: true}, function(err, doc){
             if(err){
                 console.log("Something wrong when updating data!");
             }
@@ -68,10 +71,47 @@ module.exports = function (app) {
         });
     });
 
+    app.post("/delfromsaved", function (req, res) {
+        var storeID = req.body.ID;
+        var saveme = req.body.saveme;
+         console.log("body:", storeID);
+         console.log("saveme:", saveme)
+          
+        db.Article.findOneAndUpdate({_id: storeID}, {$set:{saveme: saveme}}, {new: true}, function(err, doc){
+              if(err){
+                  console.log("Something wrong when updating data!");
+              }
+          
+              console.log(doc);
+          });
+      });
+
+      app.post("/saveComment", function (req, res) {
+        var storeID = req.body.ID;
+        var saveme = req.body.saveme;
+        var comment = req.body.comment;
+         console.log("body:", storeID);
+         console.log("saveme:", comment)
+          
+        db.Article.findOneAndUpdate({_id: storeID}, {$set:{saveme: saveme, comment: comment}}, {new: true}, function(err, doc){
+              if(err){
+                  console.log("Something wrong when updating data!");
+              }
+          
+              console.log(doc);
+              console.log("hitme");
+              
+          }).then(function(){
+            res.redirect("/saved");
+          });
+
+       
+      });
+
     app.get("/saved", function (req, res) {
         db.Article.find({})
         .then(function (dbArticle) {
-             console.log("ARTICLES: -----------", dbArticle)
+            //  console.log("ARTICLES: -----------", dbArticle)
             res.render('saved', {
                 article: dbArticle,
                 title: "Digital Arts Scraper",
@@ -82,16 +122,20 @@ module.exports = function (app) {
         })
     });
 
+
     app.get("/clear", function (req, res) {
         db.Article.remove({}).then(function () {
             res.redirect('/');
         });
     });
     app.get("/clear2", function (req, res) {
-        db.Article.remove({}).then(function () {
+        db.Article.updateMany({}, {$set:{saveme: false}}, {new: true}, function(err, doc){
+            if(err){
+                console.log("Something wrong when updating data!");
+            }
+        
+            console.log(doc);
             res.redirect('/saved');
         });
     });
-  
-
 };

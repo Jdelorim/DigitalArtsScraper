@@ -21,6 +21,10 @@ var ArticleSchema = new Schema({
     saveme: {
         type: String,    
         required: true
+    }, 
+    comment: {
+        type: String,
+        required: true
     }
     
 });

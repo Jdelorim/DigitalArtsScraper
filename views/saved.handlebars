@@ -1,63 +1,73 @@
-    <nav>
-     
+<nav>
     <div class="nav-wrapper z-depth-5 deep-purple darken-3">
-      <span class="brand-logo">{{title}}</span>
-      <div class="container">
-      <div class="right">
-          <a href="#" class="sidenav-trigger" data-target="mobile-links">
-              <i class="material-icons">menu</i>
-          </a>
-      </div>
-      <ul  class="right hide-on-med-and-down">
-        <li><a href="/">Home</a></li>
-        <li><a href="/saved">Saved Articles</a></li>
-        <li><a href="/clear2" class="waves-effect waves-light btn deep-purple lighten-1">Clear Articles</a></li>
-        </ul>
-      </div>
+        <span class="brand-logo">{{title}}</span>
+        <div class="container">
+            <div class="right">
+                <a href="#" class="sidenav-trigger" data-target="mobile-links">
+                    <i class="material-icons">menu</i>
+                </a>
+            </div>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                <li><a href="/saved">Saved Articles</a></li>
+                <li><a href="/clear2" class="waves-effect waves-light btn deep-purple lighten-1">Clear Articles</a></li>
+            </ul>
+        </div>
     </div>
-    
-  </nav>
-  <ul class="sidenav deep-purple lighten-1" id="mobile-links">
+</nav>
+<ul class="sidenav deep-purple lighten-1" id="mobile-links">
     <li><a href="/" class="white-text">Home</a></li>
     <li><a href="/saved" class="white-text">Saved Articles</a></li>
-     <li><a href="/clear2" class="waves-effect waves-light btn deep-purple lighten-1">Clear Articles</a></li>
+    <li><a href="/clear2" class="waves-effect waves-light btn deep-purple lighten-1">Clear Articles</a></li>
 </ul>
 
 
 <section class="articles">
     <h2 class="headers center grey-text">Articles</h2>
-    
-    
+
+
     {{#each article}}
-      <div class="checkArticles container z-depth-5" id="checkmesaved" data-target={{this.saveme}}>
-        <div class="row">
+    
+    <div class="checkArticles container z-depth-5" id="checkmesaved" data-target={{this.saveme}}>
+        <div class="row" data-target={{this.id}}>
             <div class="col s12 center headline deep-purple darken-3 white-text">
-             <a href={{this.link}} target="_blank"><img class="left responsive-img" src={{this.img}} ></a> 
-             
+                <a href={{this.link}} target="_blank"><img class="left responsive-img" src={{this.img}}></a>
+
                 <h4 class="left-align">{{this.headline}}</h4>
-            
+
             </div>
             <div class="white">
                 <span class="black-text">{{this.blurb}}</span>
             </div>
             <div class="buttonHolder">
-                <a data-target={{this.id}} class="deleteBtn waves-effect waves-light deep-purple darken-3 btn">Delete Article</a>
-                <a href="#modal1" class="waves-effect waves-light deep-purple lighten-1 btn modal-trigger">Article Notes</a>
+                <a data-target={{this.id}} class="deleteBtn waves-effect waves-light deep-purple darken-3 btn">Delete
+                    Article</a>
+                <a href="#modal+{{this.id}}" class="waves-effect waves-light deep-purple lighten-1 btn modal-trigger">Article
+                    Notes</a>
+            </div>
+            <div class="comments">
+                <span>{{this.comment}}</span>
             </div>
         </div>
     </div>
 
-    <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4 class="putHeadline"><bold></bold></h4>
-        <input placeholder="Leave Comments" id="comments" type="text" class="validate">
-       </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><bold>close</bold></a>
+    <div id="modal+{{this.id}}" class="modal">
+        <div class="modal-content">
+            <h4 class="putHeadline">
+                <bold></bold>
+            </h4>
+            <input placeholder="Leave Comments" id="mycomments{{this.id}}" type="text" class="validate">
+        </div>
+        <div class="modal-footer">
+            <a newid={{this.id}} class="commentBtn modal-close waves-effect waves-light deep-purple darken-3 btn">Post Comment</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">
+                <bold>close</bold>
+            </a>
+        </div>
     </div>
-  </div>
-  {{/each}}
-     
+    
+    {{/each}}
+
 </section>
 
 
